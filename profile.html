@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My LIFF v2</title>
+  <style>
+    #pictureUrl { display: block; margin: 0 auto }
+  </style>
+</head>
+<body>
+  <img id="pictureUrl" width="25%">
+  <p id="userId"></p>
+  <p id="displayName"></p>
+  <p id="statusMessage"></p>
+  <p id="getDecodedIDToken"></p>
+  <p id="firstName"></p>
+  <p id="location"></p>
+  <p id="position"></p>
+  
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      liff.init({ liffId: "2000586927-g8lvqPYW" }, () => {
+        if (liff.isLoggedIn()) {
+          runApp();
+        } else {
+          liff.login();
+        }
+      }, err => console.error(err.code, err.message));
+    });
+
+    function runApp() {
+      liff.getProfile().then(profile => {
+        document.getElementById("pictureUrl").src = profile.pictureUrl;
+        document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
+        document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
+        document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
+        document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
+        
+        // ดึงข้อมูลผู้ใช้จากเว็บเซิร์ฟเวอร์เมื่อหน้าเว็บโหลด
+        fetchUserData(profile.userId);
+      }).catch(err => console.error(err));
+    }
+
+    // ฟังก์ชันสำหรับดึงข้อมูลผู้ใช้จากเว็บเซิร์ฟเวอร์
+    function fetchUserData(userId) {
+      fetch('https://545a-202-176-112-94.ngrok-free.app/users/' + userId, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        // ตรวจสอบว่าข้อมูลถูกบันทึกในเว็บเซิร์ฟเวอร์
+        if (data.status === 'ok') {
+          // แสดงข้อมูลจากเว็บเซิร์ฟเวอร์บนหน้าเว็บ LIFF
+          document.getElementById("firstName").innerText = 'ชื่อจริง: ' + data.user.firstName;
+          document.getElementById("position").innerText = 'ตำแหน่ง: ' + data.user.position;
+          document.getElementById("location").innerText = 'สถานที่: ' + data.user.location;
+        }
+      })
+      .catch(error => {
+        console.error('มีข้อผิดพลาดในการดึงข้อมูลจากเว็บเซิร์ฟเวอร์:', error);
+      });
+    }
+  </script>
+</body>
+</html>
