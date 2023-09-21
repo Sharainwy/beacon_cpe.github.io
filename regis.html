@@ -1,0 +1,132 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Liff Beacon</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="logo_beacon.png" type="image/png">
+    <style>
+        /* ส่วนของ CSS ที่ใช้แบ่งพื้นหลังเป็นสองส่วน */
+
+        /* ส่วนอื่น ๆ ของ CSS ที่เกี่ยวกับส่วนอื่นของเว็บ */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* เพิ่มสไตล์ CSS อื่น ๆ ตามที่คุณต้องการ */
+    </style>
+</head>
+<body>
+  < <!-- partial:index.partial.html --> 
+
+  <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+
+   <div class="signin"> 
+
+    <div class="content"> 
+
+     <h2>Register </h2> 
+     <h2>Line Beacon </h2>
+
+     <div class="form"> 
+
+      <div class="inputBox"> 
+
+        <div class="form">
+            <div class="inputBox">
+              <input id="nameInput" type="text" required>
+              <i>กรุณาใส่ชื่อ-นามสกุล</i>
+            </div>
+            <div class="inputBox">
+              <input id="positionInput" type="text" required>
+              <i>ตำแหน่งงาน</i>
+            </div>
+            <div class="inputBox">
+              <input id="organizationInput" type="text" required>
+              <i>ชื่อหน่วยงาน</i>
+            </div>
+            <div class="inputBox">
+              <input type="submit" value="Confirm" onclick="validateForm()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
+  <script>
+     function validateForm() {
+  liff.getProfile().then(profile => {
+      
+    // document.getElementById("pictureUrl").src = profile.pictureUrl;
+    // document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
+    // document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
+    // document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
+
+    
+      // ดึงข้อมูลจากฟอร์ม
+      const fullName = document.getElementById("nameInput").value; // เปลี่ยนตัวแปร firstName เป็น fullName
+      const position = document.getElementById("positionInput").value;
+      const organization = document.getElementById("organizationInput").value;
+
+      // ตรวจสอบว่าข้อมูลถูกกรอกครบหรือไม่
+      if (!fullName || !position || !organization) {
+        alert("กรุณากรอกข้อมูลให้ครบทุกช่อง");
+        return;
+      }
+
+      // ส่งข้อมูลไปยัง MongoDB ด้วย Ajax หรือ Fetch API
+      const data = {
+        userId: profile.userId,
+        displayName: profile.displayName,
+        picture: profile.pictureUrl,
+        firstName: fullName, // เปลี่ยนตัวแปร firstName เป็น fullName
+        position: position,
+        location: organization, // เปลี่ยนชื่อตัวแปร location เป็น organization
+      };
+
+      // ทำการส่งข้อมูลไปยังเซิร์ฟเวอร์ของคุณ
+      fetch('https://exuberant-wear-ray.cyclic.app/users/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('ข้อมูลถูกบันทึกลงใน MongoDB');
+          alert('ข้อมูลถูกบันทึกเรียบร้อยแล้ว');
+          window.close(); // ปิดหน้าต่าง LIFF
+        } else {
+          console.error('มีข้อผิดพลาดในการบันทึกข้อมูล');
+        }
+      })
+      .catch(error => {
+        console.error('มีข้อผิดพลาดในการส่งข้อมูลไปยังเซิร์ฟเวอร์:', error);
+      });
+    
+
+    // ให้ปุ่ม "ยืนยันข้อมูล" เรียกใช้ฟังก์ชัน validateForm() เมื่อคลิก
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // หยุดการส่งแบบฟอร์มธรรมดา
+      validateForm(); // เรียกใช้ฟังก์ชัน validateForm()
+    });
+
+  }).catch(err => console.error(err));
+}
+
+liff.init({ liffId: "2000586927-g8lvqPYW" }, () => {
+  if (liff.isLoggedIn()) {
+   
+    validateForm();
+  } else {
+    liff.login();
+  }
+}, err => console.error(err.code, error.message));
+  </script>
+</body>
+</html>
