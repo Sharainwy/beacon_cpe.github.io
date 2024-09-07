@@ -218,7 +218,8 @@ body {
         }
 
         function fetchUserData(userId) {
-            fetch(`https://exuberant-wear-ray.cyclic.app/users/${userId}`, {
+            // fetch(`https://exuberant-wear-ray.cyclic.app/users/${userId}`, {
+                fetch(`https://line-bot-nodejs-starter-master-production.up.railway.app/users/${userId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
